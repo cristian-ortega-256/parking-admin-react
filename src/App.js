@@ -1,28 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react'
+import { Provider } from 'react-redux'
+import { Switch, Route, Router } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import store from 'store'
+import theme from 'config/theme'
+import ROUTES from 'constants/routes'
+import initStyles from 'styles/init'
+import {
+  Home
+} from 'pages'
+import createHistory from 'history/createBrowserHistory'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const history = createHistory()
 
-export default App;
+initStyles()
+
+const App = () => (
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <Fragment>
+        <Router history={history}>
+          <Switch>
+            <Route exact path={ROUTES.HOME} component={Home} />
+          </Switch>
+        </Router>
+      </Fragment>
+    </ThemeProvider>
+  </Provider>
+)
+
+export default App

@@ -1,0 +1,28 @@
+import { createActions } from 'redux-actions'
+import api from 'services/api'
+import apiRoutes from 'constants/apiRoutes'
+
+const { fetchParkingsStart, fetchParkingsSuccess, fetchParkingsError } = createActions({
+	FETCH_PARKINGS_START: () => { },
+	FETCH_PARKINGS_SUCCESS: data => ({ data }),
+	FETCH_PARKINGS_ERROR: error => ({ error })
+})
+
+const fetchParkings = () => {
+	return async dispatch => {
+		dispatch(fetchParkingsStart())
+		try {
+			const response = await api.get(`${apiRoutes.PARKINGS}`)
+			dispatch(fetchParkingsSuccess({ response: response.data }))
+		} catch (error) {
+			dispatch(fetchParkingsError({ error }))
+		}
+	}
+}
+
+export {
+	fetchParkingsStart,
+	fetchParkingsSuccess,
+	fetchParkingsError,
+	fetchParkings
+}
