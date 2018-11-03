@@ -1,3 +1,5 @@
 export default {
-	HOME: '/'
+	DEFAULT: '/',
+	HOME: '/home',
+	PARKINGS: '/parkings'
 }

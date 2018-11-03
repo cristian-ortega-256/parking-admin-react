@@ -10,7 +10,7 @@ const theme = {
 		red: '#d0021b',
 		green: '#417505',
 		transparent: 'transparent',
-		alto: '#dddddd',
+		alto: '#dddddd'
 	}
 }
 
