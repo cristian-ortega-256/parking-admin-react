@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { fetchParkings } from 'actions/parkings'
+import { fetchParkings, editParking } from 'actions/parkings'
 import Page from 'components/Page';
+import ParkingList from 'components/ParkingList';
 
 const Title = styled.label`
 	font-family: ${({ theme }) => theme.fonts.roboto};
@@ -11,28 +12,11 @@ const Title = styled.label`
 	color: ${({ theme }) => theme.colors.blue};
 `
 
-const ParkingsContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	`
-
-const Parking = styled.label`
-	font-weight: 500;
-	font-size: 18px;
-	border-radius: 3px;
-	margin: 5px;
-	padding: 5px 10px;
-	font-family: ${({ theme }) => theme.fonts.roboto};
-	background-color: ${({ theme }) => theme.colors.blue};
-	color: ${({ theme }) => theme.colors.white};
-`
-
 class Home extends React.Component {
 
 	componentDidMount() {
 		this.props.fetchParkings()
+		console.log(this.props.parkingsRequest)
 	}
 
 	render() {
@@ -40,27 +24,21 @@ class Home extends React.Component {
 			<Page withHeader withSideBar>
 				<Title> PARKINGS PAGE </Title>
 				<Title> Parkings </Title>
-				<ParkingsContainer>
-					{
-						this.props.parkings.data.map(
-							parking =>
-								<Parking>
-									{`x: ${parking.x} y: ${parking.y}`}
-								</Parking>
-						)
-					}
-				</ParkingsContainer>
+				<ParkingList parkings={this.props.parkings.data} editParking={this.props.editParking}/>
+				{this.props.parkings.error && <label>error</label>}
 			</Page>
 		)
 	}
 }
 
-const mapStateToProps = ({ parkings }) => ({
-	parkings
+const mapStateToProps = ({ parkings, parkingsRequest }) => ({
+	parkings, 
+	parkingsRequest
 })
 
 const mapDispatchToProps = {
-	fetchParkings
+	fetchParkings,
+	editParking
 }
 
 export default connect(

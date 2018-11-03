@@ -2,16 +2,19 @@ import { handleActions } from 'redux-actions';
 import {
   fetchParkingsStart,
   fetchParkingsSuccess,
-  fetchParkingsError
+  fetchParkingsError,
+  requestParkingsStart, 
+	requestParkingsSuccess, 
+	requestParkingsError
 } from 'actions/parkings';
 
-const defaultState = {
+const defaultFetchState = {
   data: [],
   isFetching: false,
   error: null
 }
 
-const parkings = handleActions(
+export const parkings = handleActions(
   {
     [fetchParkingsStart]: state => ({
       ...state,
@@ -33,7 +36,36 @@ const parkings = handleActions(
       error
     })
   },
-  defaultState
+  defaultFetchState
 );
 
-export default parkings
+const defaultRequestState = {
+  data: null,
+  isRequesting: false,
+  error: null
+}
+
+export const parkingsRequest = handleActions(
+  {
+    [requestParkingsStart]: state => ({
+      ...state,
+      isRequesting: true,
+      error: null
+    }),
+    [requestParkingsSuccess]: (state, { payload: { data: { response } } }) => {
+      return {
+        ...state,
+        data: response,
+        isRequesting: false,
+        error: null
+      }
+    },
+    [requestParkingsError]: (state, { payload: { error } }) => ({
+      ...state,
+      data: null,
+      isRequesting: false,
+      error
+    })
+  },
+  defaultRequestState
+);

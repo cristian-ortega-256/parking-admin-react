@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
-import parkings from './parkings'
+import { parkings, parkingsRequest } from './parkings'
 
 const reducers = combineReducers({
-	parkings
+	parkings,
+	parkingsRequest
 })
 
 export default reducers
