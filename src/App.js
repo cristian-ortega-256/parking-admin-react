@@ -7,7 +7,8 @@ import theme from 'config/theme'
 import ROUTES from 'constants/routes'
 import initStyles from 'styles/init'
 import {
-  Home
+  Home,
+  Parkings
 } from 'pages'
 import createHistory from 'history/createBrowserHistory'
 
@@ -21,7 +22,9 @@ const App = () => (
       <Fragment>
         <Router history={history}>
           <Switch>
-            <Route exact path={ROUTES.HOME} component={Home} />
+            <Route exact path={ROUTES.DEFAULT} component={Home} />
+            <Route path={ROUTES.HOME} component={Home} />
+            <Route path={ROUTES.PARKINGS} component={Parkings} />
           </Switch>
         </Router>
       </Fragment>
