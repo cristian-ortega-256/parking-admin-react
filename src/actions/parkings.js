@@ -1,7 +1,6 @@
 import { createActions } from 'redux-actions'
 import api from 'services/api'
 import apiRoutes from 'constants/apiRoutes'
-import parkings from '../reducers/parkings';
 
 const { fetchParkingsStart, fetchParkingsSuccess, fetchParkingsError } = createActions({
 	FETCH_PARKINGS_START: () => { },
@@ -29,12 +28,12 @@ const { requestParkingsStart, requestParkingsSuccess, requestParkingsError } = c
 
 const editParking = parking => {
 	return async dispatch => {
-		dispatch(fetchParkingsStart())
+		dispatch(requestParkingsStart())
 		try {
-			const response = await api.put(`${apiRoutes.PARKINGS}/${parking.id}`, parking)
-			dispatch(fetchParkingsSuccess({ response: response.data }))
+			const response = await api.put(`${apiRoutes.PARKINGS}/${parking.id}/`, parking)
+			dispatch(requestParkingsSuccess({ response: response.data }))
 		} catch (error) {
-			dispatch(fetchParkingsError({ error }))
+			dispatch(requestParkingsError({ error }))
 		}
 	}
 }
@@ -44,8 +43,8 @@ export {
 	fetchParkingsSuccess,
 	fetchParkingsError,
 	fetchParkings,
-	requestParkingsStart, 
-	requestParkingsSuccess, 
+	requestParkingsStart,
+	requestParkingsSuccess,
 	requestParkingsError,
 	editParking
 }

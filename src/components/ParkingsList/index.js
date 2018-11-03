@@ -9,14 +9,15 @@ const ParkingsContainer = styled.div`
 	justify-content: center;
 `
 
-const ParkingList = props => (
-    <ParkingsContainer>
-        {
+const ParkingsList = props => (
+	<ParkingsContainer>
+		{
 			props.parkings.map(
-				parking => <Parking parking={parking} onClick={parking => props.editParking(parking)}/>
+				parking =>
+					<Parking parking={parking} onClick={parking => props.editParking(parking)} />
 			)
 		}
-    </ParkingsContainer>
+	</ParkingsContainer>
 );
 
-export default ParkingList;
+export default ParkingsList;

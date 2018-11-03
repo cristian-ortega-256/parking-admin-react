@@ -12,11 +12,9 @@ const Title = styled.label`
 	color: ${({ theme }) => theme.colors.blue};
 `
 
-class Home extends React.Component {
-
+class Parkings extends React.Component {
 	componentDidMount() {
 		this.props.fetchParkings()
-		console.log(this.props.parkingsRequest)
 	}
 
 	render() {
@@ -24,7 +22,7 @@ class Home extends React.Component {
 			<Page withHeader withSideBar>
 				<Title> PARKINGS PAGE </Title>
 				<Title> Parkings </Title>
-				<ParkingList parkings={this.props.parkings.data} editParking={this.props.editParking}/>
+				<ParkingList parkings={this.props.parkings.data} editParking={this.props.editParking} />
 				{this.props.parkings.error && <label>error</label>}
 			</Page>
 		)
@@ -32,7 +30,7 @@ class Home extends React.Component {
 }
 
 const mapStateToProps = ({ parkings, parkingsRequest }) => ({
-	parkings, 
+	parkings,
 	parkingsRequest
 })
 
@@ -44,4 +42,4 @@ const mapDispatchToProps = {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Home)
+)(Parkings)

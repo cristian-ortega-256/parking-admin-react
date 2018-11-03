@@ -10,19 +10,22 @@ const ParkingContainer = styled.label`
 	font-family: ${({ theme }) => theme.fonts.roboto};
 	background-color: ${({ theme, state }) => state ? theme.colors.green : theme.colors.red};
 	color: ${({ theme }) => theme.colors.white};
+	cursor: pointer;
 `
 
 const Parking = props => {
-    const handleParkingOnClick = props => {
-        let p = props.parking;
-        p.isOccupied = !p.isOccupied;
-        props.onClick(p)
-    }
-    return (
-    <ParkingContainer state={props.parking.isOccupied} onClick={() => handleParkingOnClick(props)}>
-        {`x: ${props.parking.x} y: ${props.parking.y}`}
-    </ParkingContainer>
-)}
+	const handleParkingOnClick = () => {
+		let p = props.parking;
+		p.isOccupied = !p.isOccupied;
+		props.onClick(p)
+	}
+
+	return (
+		<ParkingContainer state={props.parking.isOccupied} onClick={handleParkingOnClick}>
+			{`x: ${props.parking.x} y: ${props.parking.y}`}
+		</ParkingContainer>
+	)
+}
 
 
 
