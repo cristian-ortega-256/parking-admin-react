@@ -48,10 +48,10 @@ class SideBar extends React.Component {
 		return (
 			<SideBarContainer>
 				{
-					sideBarLinks.map(section => {
+					sideBarLinks.map((section, i) => {
 						const active = currentPath === section.link;
 						return (
-							<Section active={active} onClick={() => this.onLinkClick(section.link)}>
+							<Section key={`s-${i}`} active={active} onClick={() => this.onLinkClick(section.link)}>
 								<SectionTitle active={active} >{section.title}</SectionTitle>
 							</Section>
 						)

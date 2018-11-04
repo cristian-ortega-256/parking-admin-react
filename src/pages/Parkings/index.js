@@ -1,16 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { fetchParkings, editParking } from 'actions/parkings'
-import Page from 'components/Page';
-import ParkingList from 'components/ParkingList';
-
-const Title = styled.label`
-	font-family: ${({ theme }) => theme.fonts.roboto};
-	font-weight: 700;
-	font-size: 24px;
-	color: ${({ theme }) => theme.colors.blue};
-`
+import Page from 'components/Page'
+import ParkingsList from 'components/ParkingsList'
+import ParkingsCanvas from 'components/ParkingsCanvas'
+import SectionHeader from 'components/SectionHeader'
 
 class Parkings extends React.Component {
 	componentDidMount() {
@@ -19,10 +13,10 @@ class Parkings extends React.Component {
 
 	render() {
 		return (
-			<Page withHeader withSideBar>
-				<Title> PARKINGS PAGE </Title>
-				<Title> Parkings </Title>
-				<ParkingList parkings={this.props.parkings.data} editParking={this.props.editParking} />
+			<Page justify={'flex-start'} align={'flex-start'} withHeader withSideBar>
+				<SectionHeader title={'Parkings Live State'} />
+				<ParkingsCanvas parkings={this.props.parkings.data} editParking={this.props.editParking} />
+				{false && <ParkingsList parkings={this.props.parkings.data} editParking={this.props.editParking} />}
 				{this.props.parkings.error && <label>error</label>}
 			</Page>
 		)
