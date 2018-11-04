@@ -24,8 +24,8 @@ const PageWrapper = styled.div`
 const PageBlock = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: stretch;
+	align-items: ${({ align }) => align ? align : 'center'};;
+	justify-content: ${({ justify }) => justify ? justify : 'stretch'};
 	height: 100%;
 	width: 100%;
 	padding: 20px;
@@ -33,13 +33,13 @@ const PageBlock = styled.div`
 
 class Page extends React.Component {
 	render() {
-		const { withHeader, withSideBar } = this.props
+		const { withHeader, withSideBar, justify, align } = this.props
 		return (
 			<PageContainer>
 				{withHeader && <Header />}
 				<PageWrapper>
 					{withSideBar && <SideBar />}
-					<PageBlock>
+					<PageBlock align={align} justify={justify}>
 						{this.props.children}
 					</PageBlock>
 				</PageWrapper>

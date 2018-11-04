@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Parking from 'components/Parking'
+import ParkingItem from 'components/ParkingItem'
 
 const ParkingsContainer = styled.div`
 	display: flex;
@@ -14,7 +14,7 @@ const ParkingsList = props => (
 		{
 			props.parkings.map(
 				parking =>
-					<Parking parking={parking} onClick={parking => props.editParking(parking)} />
+					<ParkingItem parking={parking} onClick={parking => props.editParking(parking)} />
 			)
 		}
 	</ParkingsContainer>

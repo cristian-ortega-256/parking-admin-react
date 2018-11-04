@@ -13,7 +13,7 @@ const ParkingContainer = styled.label`
 	cursor: pointer;
 `
 
-const Parking = props => {
+const ParkingItem = props => {
 	const handleParkingOnClick = () => {
 		let p = props.parking;
 		p.isOccupied = !p.isOccupied;
@@ -29,4 +29,4 @@ const Parking = props => {
 
 
 
-export default Parking
+export default ParkingItem
