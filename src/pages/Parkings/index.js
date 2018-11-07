@@ -8,7 +8,7 @@ import SectionHeader from 'components/SectionHeader'
 
 class Parkings extends React.Component {
 	componentDidMount() {
-		this.props.fetchParkings()
+		setInterval(() => { this.props.fetchParkings() }, 500)
 	}
 
 	render() {
