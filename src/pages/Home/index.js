@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchConfiguration } from 'actions/configuration'
 import Page from 'components/Page';
 import SectionHeader from 'components/SectionHeader'
 import Card from '../../components/Card';
@@ -14,6 +16,10 @@ const CardsContainer = styled.div`
 `
 
 class Home extends React.Component {
+    componentDidMount() {
+        this.props.fetchConfiguration() 
+    }
+
 	render() {
 		return (
 			<Page align='space-between' withHeader withSideBar>
@@ -34,4 +40,11 @@ class Home extends React.Component {
 	}
 }
 
-export default Home
+const mapDispatchToProps = {
+    fetchConfiguration
+}
+
+export default connect(
+    null, 
+    mapDispatchToProps
+)(Home)

@@ -7,11 +7,8 @@ const Streaming = styled.img`
     border: 0px;
 `
 
-//const ip = 'https://192.168.0.10:8080/video?loginuse=admin&amp;loginpas='
-const ip = 'https://192.168.43.1:8080/video'
-
-const CameraSection = () => (
-    <Streaming src={ip} />
+const CameraSection = props => (
+    <Streaming src={`http://${props.ip}:${props.port}/video`} />
 )
 
 export default CameraSection

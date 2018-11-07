@@ -20,7 +20,7 @@ class ParkingsCanvas extends React.Component {
 	render() {
 		return (
 			<Container>
-				<Stage width={640} height={480} >
+				<Stage width={this.props.width} height={this.props.height} >
 					<Layer>
 						{
 							this.props.parkings.map((p, i) =>
