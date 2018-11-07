@@ -8,7 +8,8 @@ import ROUTES from 'constants/routes'
 import initStyles from 'styles/init'
 import {
   Home,
-  Parkings
+  Parkings,
+  Camera
 } from 'pages'
 import createHistory from 'history/createBrowserHistory'
 
@@ -25,6 +26,7 @@ const App = () => (
             <Route exact path={ROUTES.DEFAULT} component={Home} />
             <Route path={ROUTES.HOME} component={Home} />
             <Route path={ROUTES.PARKINGS} component={Parkings} />
+            <Route path={ROUTES.CAMERA} component={Camera} />
           </Switch>
         </Router>
       </Fragment>
