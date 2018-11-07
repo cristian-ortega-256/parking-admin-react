@@ -6,6 +6,10 @@ const sideBarLinks = [
 	{
 		title: 'Parkings',
 		link: 'parkings',
+	},
+	{
+		title: 'Camera',
+		link: 'camera',
 	}
 ];
 
