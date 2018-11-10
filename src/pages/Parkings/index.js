@@ -18,11 +18,11 @@ class Parkings extends React.Component {
 				<SectionHeader title={'Parkings Live State'} />
 				{
 					this.props.configurations.data &&
-					this.props.parkings.data && 
-					<ParkingsCanvas 
-						parkings={this.props.parkings.data} 
-						editParking={this.props.editParking} 
-						width={this.props.configurations.data.width} 
+					this.props.parkings.data &&
+					<ParkingsCanvas
+						parkings={this.props.parkings.data}
+						editParking={this.props.editParking}
+						width={this.props.configurations.data.width}
 						height={this.props.configurations.data.height}
 					/>
 				}
