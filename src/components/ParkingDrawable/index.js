@@ -3,17 +3,17 @@ import { Rect, Text } from 'react-konva';
 import theme from 'config/theme'
 
 const ParkingDrawable = props => {
-	const { id, x, y, isOccupied } = props.parking
-	const width = 75
-	const height = 100
+	const { id, tl_x, tl_y, br_x, br_y, isOccupied } = props.parking
+	const width = br_x - tl_x
+	const height = br_y - tl_y
 	const fontSize = 16
 
 	return (
 		<Fragment>
 			<Rect
 				key={props.index}
-				x={x}
-				y={y}
+				x={tl_x}
+				y={tl_y}
 				width={width}
 				height={height}
 				shadowBlur={0}
@@ -22,8 +22,8 @@ const ParkingDrawable = props => {
 				onClick={() => props.onClick(props.parking)}
 			/>
 			<Text
-				x={x + (width / 2 - fontSize / 2)}
-				y={y + (height / 2 - fontSize / 2)}
+				x={tl_x + (width / 2 - fontSize / 2)}
+				y={tl_y + (height / 2 - fontSize / 2)}
 				text={id}
 				fill={theme.colors.black}
 				fontSize={fontSize}
