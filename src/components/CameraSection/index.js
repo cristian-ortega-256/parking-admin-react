@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Streaming = styled.img`
-    width: 640px;
-    height: 480px;
+    width: 1280px;
+    height: 720px;
     border: 0px;
 `
 

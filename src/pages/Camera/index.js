@@ -6,29 +6,29 @@ import SectionHeader from 'components/SectionHeader'
 import CameraSection from 'components/CameraSection'
 
 class Camera extends React.Component {
-	componentDidMount() {
-		this.props.fetchConfiguration()
-	}
+    componentDidMount() {
+        this.props.fetchConfiguration()
+    }
 
-    render(){
+    render() {
         return (
             <Page justify={'flex-start'} align={'flex-start'} withHeader withSideBar>
                 <SectionHeader title={'Camera Live Streaming'} />
-                <CameraSection ip={this.props.configurations.data.ip} port={this.props.configurations.data.port}/>
+                <CameraSection ip={this.props.configurations.data.ip} port={this.props.configurations.data.port} />
             </Page>
         )
     }
 }
 
-const mapStateToProps = ({  configurations }) => ({
-	configurations
+const mapStateToProps = ({ configurations }) => ({
+    configurations
 })
 
 const mapDispatchToProps = {
-	fetchConfiguration
+    fetchConfiguration
 }
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(Camera)
