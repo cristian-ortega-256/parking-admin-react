@@ -16,24 +16,19 @@ const CardsContainer = styled.div`
 `
 
 class Home extends React.Component {
-    componentDidMount() {
-        this.props.fetchConfiguration() 
-    }
+	componentDidMount() {
+		this.props.fetchConfiguration()
+	}
 
 	render() {
 		return (
 			<Page align='space-between' withHeader withSideBar>
 				<SectionHeader title={'Dashboard'} />
 				<CardsContainer>
-					<Card title={'Parkings'} content={30} />
-					<Card title={'Avaiable parkings'} content={12} />
-					<Card title={'Ocuppied parkings'} content={18} />
-					<Card title={'Parkings'} content={30} />
-					<Card title={'Avaiable parkings'} content={12} />
-					<Card title={'Ocuppied parkings'} content={18} />
-					<Card title={'Parkings'} content={30} />
-					<Card title={'Avaiable parkings'} content={12} />
-					<Card title={'Ocuppied parkings'} content={18} />
+					<Card title={'Estacionamientos Habilitados'} content={30} />
+					<Card title={'Estacionamientos Libres'} content={12} />
+					<Card title={'Estacionamientos Ocupados'} content={18} />
+					<Card title={'Reporte Mensual'} />
 				</CardsContainer>
 			</Page>
 		)
@@ -41,10 +36,10 @@ class Home extends React.Component {
 }
 
 const mapDispatchToProps = {
-    fetchConfiguration
+	fetchConfiguration
 }
 
 export default connect(
-    null, 
-    mapDispatchToProps
+	null,
+	mapDispatchToProps
 )(Home)
